@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Digital Biology Work Books</title>
+    <style>
+        body {
+            background-color: #0b1726;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+        }
+        /* Profile Card */
+        .profile-card {
+            background-color: #1e293b;
+            padding: 25px 15px;
+            border-radius: 16px;
+            border: 2px solid #00ffcc;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+        }
+        .profile-img-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            overflow: hidden;
+            background-color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 5px 0;
+        }
+        .profile-role {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin: 3px 0;
+        }
+        .profile-school {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .badge-line {
+            font-size: 13px;
+            margin: 6px 0;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+        /* Main Hub Title */
+        .hub-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff007f, #7928ca);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #00ffcc;
+            line-height: 1.4;
+        }
+        /* Class Folders / Buttons */
+        .folder-card {
+            background-color: #121212;
+            border: 2px solid #00ffcc;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+            transition: 0.2s;
+        }
+        .folder-card:active {
+            transform: scale(0.98);
+        }
+        .folder-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffff00;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .folder-sub {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+        .creator-footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #94a3b8;
+            border-top: 1px solid #1e293b;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- Profile Header Section -->
+    <div class="profile-card">
+        <div class="profile-img-container">
+            <img src="profile.jpg" alt="Sri Akuti Rambabu" class="profile-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:#00ffcc; font-size:24px; font-weight:bold;\'>AR</span>'">
+        </div>
+        <div class="profile-name">Sri Akuti Rambabu</div>
+        <div class="profile-role">School Assistant (Biological Science)</div>
+        <div class="profile-school">ZPHS Vemsoor, Khammam District, Telangana</div>
+        
+        <div class="badge-line">⭐ 14 Years of Teaching Experience</div>
+        <div class="badge-line">🏆 STATE GREEN CHAMPION AWARDEE</div>
+        <div class="badge-line">🥇 DISTRICT BEST TEACHER AWARDEE</div>
+    </div>
+
+    <!-- Website Title Badge -->
+    <div class="hub-tag">📚 INTERACTIVE DIGITAL BIOLOGY WORK BOOKS</div>
+
+    <!-- 6th Science Folder -->
+    <div class="folder-card" style="border-color: #39ff14;">
+        <a href="class-6.html" class="folder-link" style="color: #39ff14;">
+            <span>🟢 6th Science Work Books</span>
+            <span>📂 Open</span>
+        </a>
+        <div class="folder-sub">సమగ్ర అభ్యాస పత్రాలు & ఇంటరాక్టివ్ మాడ్యూల్స్</div>
+    </div>
+
+    <!-- 7th Science Folder -->
+    <div class="folder-card" style="border-color: #ff9900;">
+        <a href="class-7.html" class="folder-link" style="color: #ff9900;">
+            <span>🟠 7th Science Work Books</span>
+            <span>📂 Open</span>
+        </a>
+        <div class="folder-sub">అభ్యాస పత్రాలు & ఇంటరాక్టివ్ క్విజ్‌లు</div>
+    </div>
+
+    <!-- 8th Biology Folder -->
+    <div class="folder-card" style="border-color: #00ffcc;">
+        <a href="class-8.html" class="folder-link" style="color: #00ffcc;">
+            <span>🌿 8th Biology Work Books</span>
+            <span>📂 Open</span>
+        </a>
+        <div class="folder-sub">జీవశాస్త్ర వర్క్‌బుక్ డిజిటల్ మాడ్యూల్స్</div>
+    </div>
+
+    <!-- 9th Biology Folder -->
+    <div class="folder-card" style="border-color: #ff007f;">
+        <a href="class-9.html" class="folder-link" style="color: #ff77e9;">
+            <span>🔬 9th Biology Work Books</span>
+            <span>📂 Open</span>
+        </a>
+        <div class="folder-sub">కణ నిర్మాణం, కణజాలాలు, జ్ఞానేంద్రియాలు మొదలైనవి</div>
+    </div>
+
+    <!-- 10th Biology Folder -->
+    <div class="folder-card" style="border-color: #ffff00;">
+        <a href="class-10.html" class="folder-link" style="color: #ffff00;">
+            <span>📘 10th Biology Work Books</span>
+            <span>📂 Open</span>
+        </a>
+        <div class="folder-sub">పదవ తరగతి డిజిటల్ వర్క్‌బుక్ హబ్</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="creator-footer">
+        Created by A. Rambabu, SA Biology<br>
+        Digital Learning Platform for Students
+    </div>
+
+</div>
+
+</body>
+</html>
+
