@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear Paragraph Questions - Q&A</title>
+    <style>
+        body { background-color: #000000; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding: 15px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 680px; background-color: #121212; border: 2px solid #00ffcc; border-radius: 12px; padding: 20px; box-sizing: border-box; }
+        .branding { text-align: center; color: #ff00ff; font-size: 15px; font-weight: bold; margin-bottom: 10px; }
+        .header-title { text-align: center; color: #00ffcc; font-size: 18px; margin-top: 0; margin-bottom: 20px; }
+        .q-box { background-color: #1a1a1a; border-left: 4px solid #ffff00; padding: 12px; border-radius: 6px; margin-bottom: 15px; }
+        .q-text { color: #ffff00; font-size: 15px; font-weight: bold; line-height: 1.4; margin: 0 0 8px 0; }
+        .ans-text { color: #00ffcc; font-size: 14px; margin-top: 5px; display: none; font-weight: bold; }
+        .reveal-btn { background-color: #262626; color: #ffffff; border: 1px solid #00ffcc; border-radius: 4px; padding: 8px 12px; font-size: 13px; cursor: pointer; margin-top: 5px; }
+        .reveal-btn:hover { background-color: #00ffcc; color: #000; }
+        .retry-btn { background-color: #ffff00; color: #000000; border: none; border-radius: 6px; padding: 12px 25px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; text-transform: uppercase; }
+        .footer-note { text-align: center; color: #ffffff; font-size: 14px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="branding">created by ARambabu SA biology</div>
+    <h2 class="header-title">అభ్యాస పత్రం - 3: IV. సమాధానాలు (Paragraph Questions)</h2>
+    
+    <div id="questions-container">
+        <!-- Q1 -->
+        <div class="q-box">
+            <p class="q-text">1. మానవ చెవి యొక్క ప్రధాన విధులు ఏమిటి?<br><span style="color:#fff; font-size:13px;">What are the main functions of the human ear?</span></p>
+            <button class="reveal-btn" onclick="toggleAns('ans1', this)">సమాధానం చూడండి (View Answer)</button>
+            <div id="ans1" class="ans-text">Ans: The main functions of the human ear are hearing and maintaining body balance.</div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="q-box">
+            <p class="q-text">2. బాహ్య చెవి యొక్క భాగాలు మరియు వాటి విధులను పేర్కొనండి.<br><span style="color:#fff; font-size:13px;">Name the parts of the external ear and state their functions.</span></p>
+            <button class="reveal-btn" onclick="toggleAns('ans2', this)">సమాధానం చూడండి (View Answer)</button>
+            <div id="ans2" class="ans-text">Ans: The external ear consists of the pinna, which collects sound waves, and the auditory canal, which protects the ear using wax.</div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="q-box">
+            <p class="q-text">3. మధ్యచెవిలో ఉండే మూడు ఎముకల పేర్లను రాసి, వాటి విధులను తెలపండి?<br><span style="color:#fff; font-size:13px;">Write the names of the three tiny bones in the middle ear and state their functions.</span></p>
+            <button class="reveal-btn" onclick="toggleAns('ans3', this)">సమాధానం చూడండి (View Answer)</button>
+            <div id="ans3" class="ans-text">Ans: The three bones are malleus, incus, and stapes, which amplify the intensity of sound vibrations.</div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="q-box">
+            <p class="q-text">4. అర్ధవర్తుల కుల్యల యొక్క విధి ఏమిటి?<br><span style="color:#fff; font-size:13px;">What is the function of semicircular canals?</span></p>
+            <button class="reveal-btn" onclick="toggleAns('ans4', this)">సమాధానం చూడండి (View Answer)</button>
+            <div id="ans4" class="ans-text">Ans: Semicircular canals form part of the vestibular apparatus which helps in maintaining body balance.</div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="q-box">
+            <p class="q-text">5. శబ్దాలు వినడంలో కర్ణావర్తం పాత్రను రాయండి.<br><span style="color:#fff; font-size:13px;">Write the role of cochlea in hearing.</span></p>
+            <button class="reveal-btn" onclick="toggleAns('ans5', this)">సమాధానం చూడండి (View Answer)</button>
+            <div id="ans5" class="ans-text">Ans: The cochlea contains sensory cells that convert sound vibrations into nerve impulses and transmit them to the brain.</div>
+        </div>
+    </div>
+
+    <div class="footer-note" id="congrats" style="display:none; color:#00ffcc; font-weight:bold;">EXCELLENT! అన్ని సమాధానాలు చూసేశారు!</div>
+    <button class="retry-btn" onclick="location.reload()">RETRY (మొదటి నుండి)</button>
+</div>
+
+<script>
+let viewedCount = 0;
+let checked = {};
+
+function toggleAns(id, btn) {
+    let ansDiv = document.getElementById(id);
+    if(ansDiv.style.display === "block") {
+        ansDiv.style.display = "none";
+        btn.innerText = "సమాధానం చూడండి (View Answer)";
+    } else {
+        ansDiv.style.display = "block";
+        btn.innerText = "సమాధానం దాచు (Hide Answer)";
+        if(!checked[id]) {
+            checked[id] = true;
+            viewedCount++;
+            if(viewedCount === 5) {
+                document.getElementById("congrats").style.display = "block";
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>
