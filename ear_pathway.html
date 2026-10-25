@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear Pathway Ordering</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; padding: 15px; margin: 0; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 650px; background: #121212; padding: 20px; border-radius: 12px; border: 2px solid #00ffcc; box-sizing: border-box; }
+        .branding { font-size: 15px; color: #ff00ff; margin-bottom: 10px; text-align: center; font-weight: bold; }
+        .header-title { color: #00ffcc; text-align: center; font-size: 18px; margin-top: 0; margin-bottom: 15px; }
+        .step-box { background: #1a1a1a; padding: 12px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid #ffff00; font-size: 14px; color: #ffff00; }
+        select { background: #262626; color: #ffffff; padding: 6px; border: 1px solid #00ffcc; border-radius: 4px; font-size: 13px; margin-top: 5px; width: 100%; }
+        .submit-btn { background: #ffff00; color: #000; font-weight: bold; padding: 12px; width: 100%; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; margin-top: 10px; font-size: 15px; }
+        #result { margin-top: 15px; text-align: center; font-weight: bold; font-size: 18px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="branding">created by ARambabu SA biology</div>
+    <h2 class="header-title">అభ్యాస పత్రం - 3: III. వినికిడి ప్రక్రియ సరైన క్రమం</h2>
+    <div class="step-box">
+        పదాలు: (కర్ణావర్తం, కర్ణభేరి, మెదడు, పిన్నా, శ్రవణ నాడి)
+    </div>
+    
+    <div class="step-box">
+        1. మొదటి దశ (Step 1):<br>
+        <select id="e1">
+            <option value="">-- ఎంచుకోండి --</option>
+            <option value="correct">పిన్నా / Pinna</option>
+            <option value="wrong">కర్ణభేరి / Eardrum</option>
+            <option value="wrong">మెదడు / Brain</option>
+        </select>
+    </div>
+
+    <div class="step-box">
+        2. రెండవ దశ (Step 2):<br>
+        <select id="e2">
+            <option value="">-- ఎంచుకోండి --</option>
+            <option value="correct">కర్ణభేరి / Eardrum</option>
+            <option value="wrong">కర్ణావర్తం / Cochlea</option>
+            <option value="wrong">శ్రవణ నాడి / Auditory nerve</option>
+        </select>
+    </div>
+
+    <div class="step-box">
+        3. మూడవ దశ (Step 3):<br>
+        <select id="e3">
+            <option value="">-- ఎంచుకోండి --</option>
+            <option value="correct">కర్ణావర్తం / Cochlea</option>
+            <option value="wrong">పిన్నా / Pinna</option>
+            <option value="wrong">మెదడు / Brain</option>
+        </select>
+    </div>
+
+    <div class="step-box">
+        4. నాల్గవ దశ (Step 4):<br>
+        <select id="e4">
+            <option value="">-- ఎంచుకోండి --</option>
+            <option value="correct">శ్రవణ నాడి / Auditory nerve</option>
+            <option value="wrong">కర్ణభేరి / Eardrum</option>
+            <option value="wrong">కర్ణావర్తం / Cochlea</option>
+        </select>
+    </div>
+
+    <div class="step-box">
+        5. ఐదవ దశ (Step 5):<br>
+        <select id="e5">
+            <option value="">-- ఎంచుకోండి --</option>
+            <option value="correct">మెదడు / Brain</option>
+            <option value="wrong">పిన్నా / Pinna</option>
+            <option value="wrong">శ్రవణ నాడి / Auditory nerve</option>
+        </select>
+    </div>
+
+    <button class="submit-btn" onclick="checkEarOrder()">సమాధానాలు సరిచూడండి (SUBMIT)</button>
+    <div id="result"></div>
+</div>
+
+<script>
+function checkEarOrder() {
+    let ids = ['e1', 'e2', 'e3', 'e4', 'e5'];
+    let score = 0;
+    ids.forEach(id => {
+        let el = document.getElementById(id);
+        if(el.value === "correct") {
+            el.style.backgroundColor = "#28a745";
+            el.style.color = "#fff";
+            score++;
+        } else {
+            el.style.backgroundColor = "#dc3545";
+            el.style.color = "#fff";
+        }
+    });
+    let res = document.getElementById("result");
+    if(score === 5) {
+        res.innerHTML = "EXCELLENT! అద్భుతంగా సరిగ్గా అమర్చారు!";
+        res.style.color = "#00ffcc";
+    } else {
+        res.innerHTML = "WELL TRIED! కొన్ని మార్పులు చేయండి.";
+        res.style.color = "#ffff00";
+    }
+}
+</script>
+</body>
+</html>
