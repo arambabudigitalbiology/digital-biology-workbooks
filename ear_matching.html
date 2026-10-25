@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear Tissues - Matching Game</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; padding: 15px; margin: 0; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 680px; background: #121212; padding: 20px; border-radius: 12px; border: 2px solid #00ffcc; box-sizing: border-box; }
+        .branding { font-size: 15px; color: #ff00ff; margin-bottom: 10px; text-align: center; font-weight: bold; }
+        .header-title { color: #00ffcc; text-align: center; font-size: 18px; margin-top: 0; margin-bottom: 15px; }
+        .match-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; background: #1a1a1a; padding: 10px; border-radius: 6px; font-size: 14px; color: #ffff00; gap: 10px; }
+        select { background: #262626; color: #ffffff; padding: 8px; border: 1px solid #00ffcc; border-radius: 4px; max-width: 270px; font-size: 13px; outline: none; }
+        .submit-btn { background: #ffff00; color: #000; font-weight: bold; padding: 12px; width: 100%; border: none; border-radius: 6px; cursor: pointer; margin-top: 15px; font-size: 16px; text-transform: uppercase; }
+        #result { margin-top: 20px; text-align: center; }
+        .score-text { font-size: 20px; color: #ffff00; font-weight: bold; margin-bottom: 8px; }
+        .badge { font-size: 22px; color: #00ffcc; font-weight: bold; margin-bottom: 15px; display: block; }
+        .retry-btn { background: #00ffcc; color: #000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="branding">created by ARambabu SA biology</div>
+    <h2 class="header-title">అభ్యాస పత్రం - 3: II. జత పరచండి (Matching)</h2>
+    <div id="matching-form"></div>
+    <button class="submit-btn" onclick="checkMatches()">సమాధానాలు సరిచూడండి (SUBMIT)</button>
+    <div id="result"></div>
+</div>
+
+<script>
+const pairs = [
+    { term: "1. పిన్నా / Pinna", match: "c. ధ్వని తరంగాలను సేకరిస్తుంది / Collects sound waves" },
+    { term: "2. కర్ణభేరి / Eardrum", match: "e. కంపనాలను నాడీ ప్రేరణగా మారుస్తుంది / Converts vibrations" },
+    { term: "3. ఓసికిల్స్ (Ossicles)", match: "d. ధ్వనికంపనాల తీవ్రతను పెంచుతుంది / Amplifies sound vibrations" },
+    { term: "4. కర్ణావర్తం / Cochlea", match: "a. మెదడుకు సంకేతాలను పంపుతుంది / Sends signals to brain" },
+    { term: "5. శ్రవణ నాడి / Auditory nerve", match: "b. శరీర సమతాస్థితిని కాపాడుతుంది / Maintains body balance" }
+];
+
+let formDiv = document.getElementById("matching-form");
+let shuffled = [...pairs].map(p => p.match).sort(() => Math.random() - 0.5);
+
+pairs.forEach((p, idx) => {
+    let opts = `<option value="">-- ఎంచుకోండి (Select) --</option>`;
+    shuffled.forEach(m => {
+        opts += `<option value="${m}">${m}</option>`;
+    });
+    formDiv.innerHTML += `
+        <div class="match-row">
+            <span>${p.term}</span>
+            <select id="sel-${idx}">${opts}</select>
+        </div>
+    `;
+});
+
+function checkMatches() {
+    let score = 0;
+    pairs.forEach((p, idx) => {
+        let sel = document.getElementById(`sel-${idx}`);
+        if (sel.value === p.match) {
+            sel.style.backgroundColor = "#28a745";
+            sel.style.color = "#ffffff";
+            score++;
+        } else {
+            sel.style.backgroundColor = "#dc3545";
+            sel.style.color = "#ffffff";
+        }
+    });
+    let res = document.getElementById("result");
+    let badgeText = score >= 5 ? "EXCELLENT!" : "WELL TRIED!";
+    res.innerHTML = `
+        <div class="score-text">Your Score: ${score} / 5</div>
+        <span class="badge">${badgeText}</span>
+        <button class="retry-btn" onclick="location.reload()">RETRY</button>
+    `;
+}
+</script>
+</body>
+</html>
