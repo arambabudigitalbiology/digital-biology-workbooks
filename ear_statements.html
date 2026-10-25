@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear Protection Statements - True or False</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; padding: 15px; margin: 0; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 620px; background: #121212; padding: 20px; border-radius: 12px; border: 2px solid #00ffcc; box-sizing: border-box; }
+        .branding { font-size: 15px; color: #ff00ff; margin-bottom: 10px; text-align: center; font-weight: bold; }
+        .header-title { color: #00ffcc; text-align: center; font-size: 18px; margin-top: 0; margin-bottom: 15px; }
+        .tf-box { background: #1a1a1a; padding: 12px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #ffff00; }
+        .tf-q { color: #ffff00; font-size: 15px; line-height: 1.4; font-weight: bold; margin: 0 0 10px 0; }
+        .tf-buttons { display: flex; gap: 10px; }
+        .tf-btn { flex: 1; padding: 10px; font-weight: bold; border: 1px solid #444; border-radius: 4px; cursor: pointer; background: #262626; color: #fff; }
+        .tf-btn.selected-correct { background-color: #28a745 !important; color: #fff !important; }
+        .tf-btn.selected-wrong { background-color: #dc3545 !important; color: #fff !important; }
+        .submit-btn { background: #ffff00; color: #000; font-weight: bold; padding: 12px; width: 100%; border: none; border-radius: 6px; cursor: pointer; margin-top: 15px; font-size: 16px; text-transform: uppercase; }
+        #result { margin-top: 20px; text-align: center; }
+        .score-text { font-size: 20px; color: #ffff00; font-weight: bold; margin-bottom: 8px; }
+        .badge { font-size: 22px; color: #00ffcc; font-weight: bold; margin-bottom: 15px; display: block; }
+        .retry-btn { background: #00ffcc; color: #000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="branding">created by ARambabu SA biology</div>
+    <h2 class="header-title">అభ్యాస పత్రం - 3: V. చెవి సంరక్షణ వాక్యాలు (True / False)</h2>
+    <div id="tf-container"></div>
+    <button class="submit-btn" onclick="submitEarTF()">సమాధానాలు సరిచూడండి (SUBMIT)</button>
+    <div id="result"></div>
+</div>
+
+<script>
+const tfData = [
+    { q: "1. పదునైన వస్తువులను ఉపయోగించి లోపలి చెవిని శుభ్రం చేయాలి. / Clean inner ear with sharp objects.", ans: false },
+    { q: "2. పెద్ద శబ్దాలు మన వినికిడిని దెబ్బతీస్తాయి. / Loud noises damage our hearing.", ans: true },
+    { q: "3. అగ్గిపుల్లలు లేదా పిన్నులను చెవి లోపల ఉంచడం సురక్షతం. / Putting matchsticks or pins inside the ear is safe.", ans: false },
+    { q: "4. చెవిని నొప్పి లేదా చెవి నుండి ఏవైనా ద్రావాలు వస్తుంటే వైద్యుడిని సంప్రదించాలి. / Consult a doctor if ear pain or discharge occurs.", ans: true },
+    { q: "5. స్నానం చేసిన తర్వాత చెవులలో నీరు లేకుండా తొలగిస్తే, ఇన్ఫెక్షన్ నివారించడంలో సహాయపడుతుంది. / Removing water from ears after bath prevents infection.", ans: true },
+    { q: "6. ఉడికించిన నూనెలు మరియు ఆకుర రసాలను చెవిలో పోయడం వల్ల చెవిటితనం ఏర్పడుతుంది. / Pouring boiled oils and leaf juices into the ear causes deafness.", ans: true }
+];
+
+let userAnswers = {};
+let container = document.getElementById("tf-container");
+
+tfData.forEach((item, idx) => {
+    container.innerHTML += `
+        <div class="tf-box">
+            <p class="tf-q">${item.q}</p>
+            <div class="tf-buttons">
+                <button class="tf-btn" id="btn-t-${idx}" onclick="pickAnswer(${idx}, true)">సరియైనది (True)</button>
+                <button class="tf-btn" id="btn-f-${idx}" onclick="pickAnswer(${idx}, false)">తప్పు (False)</button>
+            </div>
+        </div>
+    `;
+});
+
+function pickAnswer(idx, val) {
+    userAnswers[idx] = val;
+    let btnT = document.getElementById(`btn-t-${idx}`);
+    let btnF = document.getElementById(`btn-f-${idx}`);
+    btnT.style.border = val ? "2px solid #ffff00" : "1px solid #444";
+    btnF.style.border = !val ? "2px solid #ffff00" : "1px solid #444";
+}
+
+function submitEarTF() {
+    let score = 0;
+    tfData.forEach((item, idx) => {
+        let btnT = document.getElementById(`btn-t-${idx}`);
+        let btnF = document.getElementById(`btn-f-${idx}`);
+        btnT.classList.remove('selected-correct', 'selected-wrong');
+        btnF.classList.remove('selected-correct', 'selected-wrong');
+        
+        let userPick = userAnswers[idx];
+        if (userPick !== undefined) {
+            if (userPick === item.ans) {
+                score++;
+                if (userPick === true) btnT.classList.add('selected-correct');
+                else btnF.classList.add('selected-correct');
+            } else {
+                if (userPick === true) {
+                    btnT.classList.add('selected-wrong');
+                    btnF.classList.add('selected-correct');
+                } else {
+                    btnF.classList.add('selected-wrong');
+                    btnT.classList.add('selected-correct');
+                }
+            }
+        } else {
+            if (item.ans === true) btnT.classList.add('selected-correct');
+            else btnF.classList.add('selected-correct');
+        }
+    });
+
+    let res = document.getElementById("result");
+    let badgeText = score >= 5 ? "EXCELLENT!" : "WELL TRIED!";
+    res.innerHTML = `
+        <div class="score-text">Your Score: ${score} / 6</div>
+        <span class="badge">${badgeText}</span>
+        <button class="retry-btn" onclick="location.reload()">RETRY</button>
+    `;
+}
+</script>
+</body>
+</html>
