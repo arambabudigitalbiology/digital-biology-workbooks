@@ -43,7 +43,8 @@
         .profile-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* ఫోటో కట్ కాకుండా పూర్తిగా కనిపిస్తుంది */
+            background-color: #0f172a;
         }
         .profile-name {
             font-size: 22px;
@@ -123,7 +124,7 @@
     <!-- Profile Header Section -->
     <div class="profile-card">
         <div class="profile-img-container">
-            <img src="profile.jpg" alt="Sri Akuti Rambabu" class="profile-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:#00ffcc; font-size:24px; font-weight:bold;\'>AR</span>'">
+            <img src="profile.png" alt="Sri Akuti Rambabu" class="profile-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color:#00ffcc; font-size:24px; font-weight:bold;\'>AR</span>'">
         </div>
         <div class="profile-name">Sri Akuti Rambabu</div>
         <div class="profile-role">School Assistant (Biological Science)</div>
@@ -192,4 +193,3 @@
 
 </body>
 </html>
-
